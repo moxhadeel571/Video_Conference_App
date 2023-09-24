@@ -1,6 +1,4 @@
 
-
-```markdown
 # Video Conference App
 
 ![Logo](https://example.com/path/to/logo.png)
