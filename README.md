@@ -50,25 +50,25 @@ Before getting started, make sure you have the following installed:
 
 - Java Development Kit (JDK)
 - Maven
-- MySQL or your preferred database
+- MongoDB or your preferred database
 
 ### Installation
 
 1. Clone the repository
    ```sh
-   git clone https://github.com/YourUsername/Video-Conference-App.git
+   git clone https://github.com/moxhadeel571/Video_Conference_App.git
    ```
 
 2. Configure the application properties for your database.
 
 3. Build the project using Maven.
    ```sh
-   mvn clean install
+   mvn clean
    ```
 
 4. Run the application.
    ```sh
-   java -jar target/video-conference-app.jar
+   mvn install
    ```
 
 ## Usage
@@ -93,14 +93,12 @@ Distributed under the MIT License. See [LICENSE](LICENSE.md) for more informatio
 
 ## Authors
 
-- Your Name - [YourGitHubProfile](https://github.com/YourGitHubProfile)
+- Mohammed Shadeel - [moxhadeel571](https://github.com/moxhadeel571)
 
 ## Acknowledgements
 
 - Spring Boot
-- WebRTC
 - Bootstrap
-- Icons made by [Iconfont](https://www.iconfont.cn/)
 ```
 
-Please replace the placeholders (e.g., `https://example.com/path/to/logo.png`) with actual URLs or paths relevant to your project. This template provides a basic structure for your README file, and you can further customize it to match your project's specific details and features.
+
