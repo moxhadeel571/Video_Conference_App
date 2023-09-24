@@ -33,12 +33,18 @@ The Video Conference App is a state-of-the-art video conferencing solution devel
 ### Features
 
 - Real-time video conferencing
+- ![image](https://github.com/moxhadeel571/Video_Conference_App/assets/60618158/3e9c66ca-0d47-44f8-9b10-f33c328af26f)
 - Screen sharing
+- ![image](https://github.com/moxhadeel571/Video_Conference_App/assets/60618158/95c65200-0e5b-4d0a-a563-2c6202c572a7)
 - Chat functionality
+- ![image](https://github.com/moxhadeel571/Video_Conference_App/assets/60618158/2927b2ce-d298-4835-82d6-15ef39a15532)
 - User authentication and authorization
+- ![image](https://github.com/moxhadeel571/Video_Conference_App/assets/60618158/ecb64415-c1b0-42d6-a49c-f362e80e5d2c)
+
+- ![image](https://github.com/moxhadeel571/Video_Conference_App/assets/60618158/943191fd-9b96-4067-bbd8-09997222b489)
 - Meeting scheduling
-- Recording and playback
-- Secure and encrypted communication
+- ![image](https://github.com/moxhadeel571/Video_Conference_App/assets/60618158/5b66a518-1938-480b-b7f1-fda5f545e312)
+
 
 ## Getting Started
 
