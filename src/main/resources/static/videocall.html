@@ -1,0 +1,167 @@
+    <html>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <head>
+
+        <style>
+            #root {
+                width: 100vw;
+                height: 100vh;
+            }
+        </style>
+    </head>
+
+
+    <body>
+    <div id="root">
+
+
+    </div>
+    </body>
+    <script src="https://unpkg.com/@zegocloud/zego-uikit-prebuilt/zego-uikit-prebuilt.js"></script>
+    <script>
+        window.onload = function () {
+            function getUrlParams(url) {
+                let urlStr = url.split('?')[1];
+                const urlSearchParams = new URLSearchParams(urlStr);
+                const result = Object.fromEntries(urlSearchParams.entries());
+                return result;
+            }
+
+
+            // Generate a Token by calling a method.
+            // @param 1: appID
+            // @param 2: serverSecret
+            // @param 3: Room ID
+            // @param 4: User ID
+            // @param 5: Username
+            const roomID = getUrlParams(window.location.href)['roomID'] || (Math.floor(Math.random() * 10000) + "");
+            const userID = Math.floor(Math.random() * 10000) + "";
+            const userName = "userName" + userID;
+            const appID = 1777947150;
+            const serverSecret = "6adfc6129e10341f3a63a8d9798448c9";
+            const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID, userID, userName);
+
+
+            const zp = ZegoUIKitPrebuilt.create(kitToken);
+            zp.joinRoom({
+                container: document.querySelector("#root"),
+                sharedLinks: [{
+                    name: 'Personal link',
+                    url: window.location.protocol + '//' + window.location.host  + window.location.pathname + '?roomID=' + roomID,
+                }],
+                scenario: {
+                    mode: ZegoUIKitPrebuilt.VideoConference,
+                },
+
+                turnOnMicrophoneWhenJoining: true,
+                startRecording:true,
+                turnOnCameraWhenJoining: true,
+                showMyCameraToggleButton: true,
+                showMyMicrophoneToggleButton: true,
+                showAudioVideoSettingsButton: true,
+                showScreenSharingButton: true,
+                showTextChat: true,
+                showUserList: true,
+                maxUsers: 50,
+                layout: "Sidebar",
+                showLayoutButton: true,
+
+            });
+        }
+        const appID = 1777947150;
+        const serverSecret = "6adfc6129e10341f3a63a8d9798448c9";
+
+        // Generate a Signature
+        function generateSignature(appID, serverSecret) {
+            const timestamp = Math.floor(Date.now() / 1000); // Unix timestamp in seconds
+            const signatureNonce = Math.floor(Math.random() * 1000000000000); // Random number
+
+            // Construct the string to be hashed
+            const stringToHash = `${appID}${signatureNonce}${serverSecret}${timestamp}`;
+
+            // Calculate the MD5 hash of the string
+            const crypto = require('crypto');
+            const signature = crypto.createHash('md5').update(stringToHash).digest("hex");
+
+            return {
+                Signature: signature,
+                SignatureNonce: signatureNonce,
+                Timestamp: timestamp,
+            };
+        }
+
+        // Usage example
+        const generatedSignature = generateSignature(appID, serverSecret);
+        console.log("Generated Signature:", generatedSignature.Signature);
+        console.log("SignatureNonce:", generatedSignature.SignatureNonce);
+        console.log("Timestamp:", generatedSignature.Timestamp);
+        // Add event listeners for recording buttons
+
+        // Your existing code...
+
+        window.onload = function () {
+            // Replace 'YOUR_ROOM_ID', 'YOUR_SIGNATURE_NONCE', 'YOUR_TIMESTAMP', 'YOUR_SIGNATURE',
+            // 'YOUR_REGION', 'YOUR_BUCKET_NAME', 'YOUR_ACCESS_KEY_ID', and 'YOUR_ACCESS_KEY_SECRET' with actual values.
+
+            const roomId = 'YOUR_ROOM_ID';
+            const signatureNonce = 'YOUR_SIGNATURE_NONCE';
+            const timestamp = 'YOUR_TIMESTAMP';
+            const signature = 'YOUR_SIGNATURE';
+
+            const requestBody = {
+                "RoomId": roomId,
+                "RecordInputParams": {
+                    "RecordMode": 1, // Set to 1 for single-stream recording
+                    // Add other required recording parameters here
+                },
+                "RecordOutputParams": {
+                    "OutputFileFormat": "mp4", // Set the desired output format
+                    "OutputFolder": "record/" // Set the folder where recordings will be stored
+                    // Add other output parameters here
+                },
+                "StorageParams": {
+                    "Vendor": 1, // Set to the appropriate storage provider (e.g., 1 for Amazon S3)
+                    "Region": "YOUR_REGION", // Set the storage region
+                    "Bucket": "YOUR_BUCKET_NAME", // Set the storage bucket
+                    "AccessKeyId": "YOUR_ACCESS_KEY_ID", // Set your access key ID
+                    "AccessKeySecret": "YOUR_ACCESS_KEY_SECRET" // Set your access key secret
+                    // Add other storage parameters here
+                }
+            };
+
+            const requestOptions = {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'AppId': appID,
+                    'SignatureNonce': signatureNonce,
+                    'Timestamp': timestamp,
+                    'Signature': signature,
+                    'SignatureVersion': '2.0',
+                    'IsTest': false
+                },
+                body: JSON.stringify(requestBody)
+            };
+
+            fetch('https://cloudrecord-api.zego.im/?Action=StartRecord', requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.Code === 0) {
+                            const taskId = data.Data.TaskId;
+                            console.log('Recording started. Task ID:', taskId);
+                        } else {
+                            console.error('Failed to start recording:', data.Message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+
+            // Continue with the rest of your code...
+        }
+
+
+    </script>
+
+    </html>
