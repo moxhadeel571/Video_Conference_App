@@ -104,6 +104,8 @@ Distributed under the MIT License. See [LICENSE](LICENSE.md) for more informatio
 
 - Spring Boot
 - Bootstrap
+- AJAX
+- JavaScript
 ```
 
 
