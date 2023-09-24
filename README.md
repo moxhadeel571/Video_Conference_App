@@ -25,7 +25,7 @@ A powerful video conferencing application built with Spring Boot.
 
 ## About The Project
 
-![Screenshots](https://example.com/path/to/screenshots.png)
+
 
 The Video Conference App is a state-of-the-art video conferencing solution developed using Spring Boot. It offers a seamless and secure way to conduct online meetings, webinars, and virtual events. This application is designed to provide a high-quality video conferencing experience with features such as screen sharing, chat, and more.
 
