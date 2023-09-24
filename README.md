@@ -6,7 +6,7 @@
 
 A powerful video conferencing application built with Spring Boot.
 
-[View Demo](https://drive.google.com/drive/folders/1oXgdWTiG3ICFDGHgoJYqhys62pb9LjZI) · [Report Bug](https://github.com/moxhadeel571) · [Request Feature](https://github.com/moxhadeel571)
+[View Demo](https://drive.google.com/file/d/1zQU8UAod_jpI5dq5YvRhhPD3MHbTPT_1/view?usp=drive_link) · [Report Bug](https://github.com/moxhadeel571) · [Request Feature](https://github.com/moxhadeel571)
 
 ## Table Of Contents
 
